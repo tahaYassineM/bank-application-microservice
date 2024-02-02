@@ -3,12 +3,14 @@ package org.learning.accountservice.web;
 import org.learning.accountservice.config.GlobalConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
 @RestController
+@RefreshScope
 public class AccountConfigTestController {
 
     @Value("${global.params.x}")
@@ -23,7 +25,7 @@ public class AccountConfigTestController {
     @Value("${customer.params.w}")
     private int p4;
 
-    private final GlobalConfig globalConfig;
+    private GlobalConfig globalConfig;
 
     AccountConfigTestController(GlobalConfig globalConfig) {
         this.globalConfig = globalConfig;
