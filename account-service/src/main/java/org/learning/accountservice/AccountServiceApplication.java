@@ -1,12 +1,14 @@
 package org.learning.accountservice;
 
 import org.learning.accountservice.clients.CustomerClientRest;
+import org.learning.accountservice.config.GlobalConfig;
 import org.learning.accountservice.entities.BankAccount;
 import org.learning.accountservice.enums.AccountType;
 import org.learning.accountservice.repository.BankAccountRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 
@@ -15,6 +17,7 @@ import java.util.UUID;
 
 @SpringBootApplication
 @EnableFeignClients
+@EnableConfigurationProperties({ GlobalConfig.class })
 public class AccountServiceApplication {
 
 	public static void main(String[] args) {
