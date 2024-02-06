@@ -25,6 +25,7 @@ public class AccountConfigTestController {
     @Value("${customer.params.w}")
     private int p4;
 
+    @Autowired
     private GlobalConfig globalConfig;
 
     AccountConfigTestController(GlobalConfig globalConfig) {
