@@ -8,3 +8,6 @@ services:
       - '8761:8761'
     expose:
       - '8761'
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http\\:localhost:87611/actuator/health"]
+      interval: 10s
