@@ -9,7 +9,7 @@ services:
     expose:
       - '8761'
     healthcheck:
-      test: ["CMD", "curl", "-f", "http\\:localhost:87611/actuator/health"]
+      test: ["CMD", "curl", "-f", "http://localhost:8761/actuator/health"]
       interval: 10s
 
   ebank-config-service:
@@ -19,3 +19,8 @@ services:
       - '8889:8889'
     expose:
       - '8889'
+    environment:
+      - DISCOVERY_SERVICE_URL:http://ebank-discovery-service:8761/eureka
+    depends_on:
+      ebank-discovery-service:
+        condition: service_healthy
